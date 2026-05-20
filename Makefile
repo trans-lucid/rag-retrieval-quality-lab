@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: install validate-solution validate-candidate-main-expected-failure validate-docker-integration render scan-safety validate clean
+.PHONY: check-render install validate-solution validate-candidate-main-expected-failure validate-docker-integration render scan-safety validate clean
 
 install:
 	$(PYTHON) -m pip install --upgrade pip
@@ -21,7 +21,10 @@ render:
 scan-safety:
 	$(PYTHON) tools/scan_safety.py
 
-validate: validate-solution validate-candidate-main-expected-failure render scan-safety validate-docker-integration
+check-render:
+	$(PYTHON) tools/check_render_contract.py
+
+validate: validate-solution validate-candidate-main-expected-failure render check-render scan-safety validate-docker-integration
 
 clean:
 	rm -rf generated
