@@ -1,0 +1,2 @@
+{"query_id":"q-alpha-password","tenant_id":"tenant_alpha","user_id":"user_alpha_basic","query":"How should I help an alpha customer recover account access when they ask about password reset?","expected_top_doc_id":"alpha-password-current","forbidden_doc_ids":["beta-password-private"]}
+{"query_id":"q-alpha-admin-basic","tenant_id":"tenant_alpha","user_id":"user_alpha_basic","query":"Can basic support use impersonation controls for account takeover?","expected_top_doc_id":"alpha-password-current","forbidden_doc_ids":["alpha-admin-impersonation","beta-password-private"]}

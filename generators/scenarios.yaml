@@ -1,0 +1,19 @@
+public:
+  seed: 20260520
+  tenants:
+    - tenant_alpha
+    - tenant_beta
+  traps:
+    - tenant collision
+    - stale keyword-heavy article
+    - ungrounded citation
+hidden:
+  seed: 20260521
+  tenants:
+    - tenant_delta
+    - tenant_other
+  traps:
+    - same product name across tenants
+    - admin ACL collision
+    - changed wording
+    - missing effective_date

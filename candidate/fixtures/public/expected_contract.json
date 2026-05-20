@@ -1,0 +1,12 @@
+{
+  "expected_starter_failures": [
+    "tenant_leak_detected",
+    "stale_doc_ranked_first",
+    "missing_grounded_citation"
+  ],
+  "result_schema": {
+    "required_top_level": ["query", "answer", "chunks", "citations", "tenant_id", "user_id"],
+    "chunk_required_fields": ["tenant_id", "doc_id", "chunk_id", "title", "text", "effective_date", "acl_groups"],
+    "citation_required_fields": ["citation_id", "chunk_id", "doc_id", "title"]
+  }
+}

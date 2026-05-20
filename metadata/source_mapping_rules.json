@@ -1,0 +1,50 @@
+{
+  "template_id": "rag-retrieval-quality-lab",
+  "positive_signals": [
+    "rag",
+    "retrieval",
+    "embedding",
+    "vector",
+    "qdrant",
+    "pinecone",
+    "weaviate",
+    "milvus",
+    "pgvector",
+    "supabase",
+    "knowledge base",
+    "support copilot",
+    "citation",
+    "acl",
+    "tenant_id",
+    "document chunk",
+    "semantic search"
+  ],
+  "negative_signals": [
+    "pure frontend only",
+    "no document/search path",
+    "no backend"
+  ],
+  "stack_matches": [
+    "python",
+    "fastapi",
+    "postgres",
+    "typescript backend",
+    "supabase",
+    "vector db"
+  ],
+  "best_roles": [
+    "AI Engineer",
+    "Backend Engineer",
+    "Staff Backend",
+    "ML Engineer"
+  ],
+  "personalization_knobs": [
+    "company domain nouns",
+    "document type",
+    "tenant names",
+    "ACL groups",
+    "freshness rules",
+    "query style",
+    "citation schema"
+  ]
+}

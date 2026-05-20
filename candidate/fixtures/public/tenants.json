@@ -1,0 +1,32 @@
+{
+  "tenants": [
+    {
+      "id": "tenant_alpha",
+      "name": "Alpha CRM"
+    },
+    {
+      "id": "tenant_beta",
+      "name": "Beta Analytics"
+    }
+  ],
+  "users": [
+    {
+      "id": "user_alpha_basic",
+      "tenant_id": "tenant_alpha",
+      "email": "basic@alpha.example",
+      "groups": ["support_basic"]
+    },
+    {
+      "id": "user_alpha_admin",
+      "tenant_id": "tenant_alpha",
+      "email": "admin@alpha.example",
+      "groups": ["support_basic", "support_admin"]
+    },
+    {
+      "id": "user_beta_basic",
+      "tenant_id": "tenant_beta",
+      "email": "basic@beta.example",
+      "groups": ["support_basic"]
+    }
+  ]
+}

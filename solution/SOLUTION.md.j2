@@ -1,0 +1,14 @@
+# Solution Notes
+
+The durable fix is to constrain retrieval before ranking and to build citations only from returned chunks.
+
+Key requirements:
+
+- Apply tenant filtering at retrieval time.
+- Apply ACL filtering using the current user's groups.
+- Rank with semantic score, freshness, and lexical overlap instead of lexical overlap alone.
+- Treat missing `effective_date` as low confidence, not as a crash.
+- Build citations from returned chunk IDs and include supporting text.
+- Write evaluation output that reports tenant leaks, stale ranking, and ungrounded citations separately.
+
+The reference implementation in `solution/src` is intentionally compact so template authors can compare candidate submissions against the behavioral contract without copying a one-off answer into candidate main.

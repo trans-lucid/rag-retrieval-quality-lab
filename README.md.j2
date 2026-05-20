@@ -1,0 +1,59 @@
+# RAG Retrieval Quality Lab
+
+Your support copilot is citing the wrong knowledge-base articles.
+
+The product is a B2B SaaS support assistant. Customers ask product questions from inside tenant-scoped workspaces. The retrieval pipeline should search only documents that the current user can access, prefer fresh relevant material over stale keyword-heavy material, and return citations that actually support the answer.
+
+Right now the retrieval path has production bugs:
+
+- documents can leak across tenants
+- admin-only documents can be returned to basic support users
+- stale articles can outrank fresher relevant docs
+- citations can reference chunks that were not returned
+
+## What You Are Building
+
+Repair the retrieval path so tenant-scoped product questions retrieve the right document chunks, respect ACL and freshness rules, produce grounded citations, and write an evaluation report.
+
+## What Is Provided
+
+- Docker Compose local simulator
+- Qdrant vector search
+- Postgres tenants, users, ACLs, document metadata, and eval results
+- MinIO S3-compatible document storage
+- deterministic fake embedding API
+- public corpus, queries, and tests
+
+## Main Files To Edit
+
+- `src/retriever.py`
+- `src/ranker.py`
+- `src/citations.py`
+- `src/eval_runner.py`
+
+You may inspect supporting modules, but the durable fix should stay on the retrieval production path.
+
+## Commands
+
+```bash
+make dev
+make seed
+make index
+make test
+make eval
+make clean
+```
+
+`make dev` starts local services. `make seed` migrates Postgres, uploads documents to MinIO, and indexes chunks into Qdrant. `make test` runs the public tests. `make eval` writes `results/retrieval_report.json` and `results/summary.md`.
+
+## Deliverables
+
+- fixed retrieval implementation
+- `results/retrieval_report.json`
+- `results/summary.md`
+
+## Evaluation
+
+Public tests verify the visible contract. Private tests use harder fixtures to check tenant isolation, ACL handling, freshness, citation grounding, hardcoding resistance, and retrieval precision.
+
+Do not add external credentials or live cloud services. The local simulator is the production environment for this exercise.

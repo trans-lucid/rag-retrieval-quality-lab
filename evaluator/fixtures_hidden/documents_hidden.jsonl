@@ -1,0 +1,2 @@
+{"doc_id":"delta-workspace-current","tenant_id":"tenant_delta","title":"Workspace recovery","body":"Members regain workspace access through identity verification and an email confirmation link.","effective_date":"2026-05-09","acl_groups":["support_basic"],"object_key":"tenant_delta/workspace/current.txt"}
+{"doc_id":"other-workspace-private","tenant_id":"tenant_other","title":"Workspace recovery","body":"Other tenant private access recovery runbook.","effective_date":"2026-05-10","acl_groups":["support_basic"],"object_key":"tenant_other/workspace/private.txt"}

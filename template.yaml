@@ -1,0 +1,76 @@
+id: rag-retrieval-quality-lab
+title: RAG Retrieval Quality Lab
+area: ai-backend
+language: python
+roles:
+  - AI Engineer
+  - Backend Engineer
+  - Staff Backend
+  - ML Engineer
+seniority:
+  - senior
+  - staff
+time_minutes:
+  medium: 60
+  hard: 90
+  staff: 120
+local_services:
+  - postgres
+  - qdrant
+  - minio
+  - fake-embedding-api
+local_environment:
+  required:
+    - docker
+    - docker-compose
+    - python-3.12
+  public_services:
+    - name: postgres
+      purpose: tenants, users, ACLs, document metadata, and eval results
+    - name: qdrant
+      purpose: vector search with payload filtering
+    - name: minio
+      purpose: S3-compatible document object storage
+    - name: fake-embedding-api
+      purpose: deterministic local embedding service
+  no_external_credentials: true
+  no_cloud_calls: true
+evaluation_axes:
+  - tenant isolation
+  - retrieval relevance
+  - citation grounding
+  - freshness handling
+  - eval/report quality
+  - production debugging
+source_signals:
+  - rag
+  - retrieval
+  - vector
+  - embedding
+  - qdrant
+  - pinecone
+  - pgvector
+  - supabase
+  - knowledge base
+  - support copilot
+  - citations
+  - acl
+  - tenant
+candidate_expected_failure:
+  - tenant_leak_detected
+  - stale_doc_ranked_first
+  - missing_grounded_citation
+hidden_test_strategy:
+  - tenant collision
+  - acl collision
+  - freshness trap
+  - citation trap
+  - hardcoding trap
+  - overbroad retrieval trap
+  - missing metadata
+forbidden:
+  - copied-startup-source
+  - external-credentials
+  - live-cloud-services
+  - hidden-tests-on-candidate-main
+  - solution-on-candidate-main
