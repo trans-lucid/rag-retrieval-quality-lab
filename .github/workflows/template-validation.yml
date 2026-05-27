@@ -40,6 +40,9 @@ jobs:
       - name: Safety scan
         run: make PYTHON=python scan-safety
 
+      - name: Validate personalization
+        run: make PYTHON=python validate-personalization
+
       - name: Docker-backed integration expected failure
         run: make PYTHON=python validate-docker-integration
 

@@ -1,13 +1,13 @@
 PYTHON ?= python3
 
-.PHONY: check-render install validate-solution validate-candidate-main-expected-failure validate-docker-integration render scan-safety validate clean
+.PHONY: validate-personalization check-render install validate-solution validate-candidate-main-expected-failure validate-docker-integration render scan-safety validate clean
 
 install:
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -e candidate
 
 validate-solution: install
-	EVAL_TARGET="$(PWD)/solution" $(PYTHON) -m pytest candidate/tests/public/test_unit_contract.py solution/tests evaluator/tests_hidden
+	EVAL_TARGET="$(CURDIR)/solution" $(PYTHON) -m pytest candidate/tests/public/test_unit_contract.py solution/tests evaluator/tests_hidden
 
 validate-candidate-main-expected-failure: install
 	bash tools/expect_candidate_failure.sh
@@ -24,7 +24,10 @@ scan-safety:
 check-render:
 	$(PYTHON) tools/check_render_contract.py
 
-validate: validate-solution validate-candidate-main-expected-failure render check-render scan-safety validate-docker-integration
+validate-personalization:
+	$(PYTHON) tools/validate_personalization.py
+
+validate: validate-solution validate-candidate-main-expected-failure render check-render scan-safety validate-personalization validate-docker-integration
 
 clean:
 	rm -rf generated
