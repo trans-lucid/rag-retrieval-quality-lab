@@ -4,7 +4,7 @@ PYTHON ?= python3
 
 install:
 	$(PYTHON) -m pip install --upgrade pip
-	$(PYTHON) -m pip install -e candidate
+	$(PYTHON) -m pip install -e 'candidate[test]'
 
 validate-solution: install
 	EVAL_TARGET="$(CURDIR)/solution" $(PYTHON) -m pytest candidate/tests/public/test_unit_contract.py solution/tests evaluator/tests_hidden
