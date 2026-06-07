@@ -7,6 +7,7 @@ The local simulator includes Qdrant, Postgres, MinIO, and a deterministic fake e
 ## Commands
 
 ```bash
+make setup
 make dev
 make seed
 make index
@@ -22,4 +23,4 @@ make clean
 - `src/citations.py`
 - `src/eval_runner.py`
 
-The starter is intentionally flawed. Public tests show the contract; private tests use harder fixtures.
+The starter is intentionally flawed. Public tests show the visible contract.

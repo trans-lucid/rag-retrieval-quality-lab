@@ -36,6 +36,7 @@ You may inspect supporting modules, but the durable fix should stay on the retri
 ## Commands
 
 ```bash
+make setup
 make dev
 make seed
 make index
@@ -54,6 +55,6 @@ make clean
 
 ## Evaluation
 
-Public tests verify the visible contract. Private tests use harder fixtures to check tenant isolation, ACL handling, freshness, citation grounding, hardcoding resistance, and retrieval precision.
+Public tests verify the visible contract. Additional evaluation checks may use harder fixtures to check tenant isolation, ACL handling, freshness, citation grounding, hardcoding resistance, and retrieval precision.
 
 Do not add external credentials or live cloud services. The local simulator is the production environment for this exercise.

@@ -1,6 +1,9 @@
 PYTHON ?= python3
 
-.PHONY: dev logs seed index test test-unit test-integration eval clean
+.PHONY: setup dev logs seed index test test-unit test-integration eval clean
+
+setup:
+	$(PYTHON) -m pip install -e .[test]
 
 dev:
 	docker compose up -d
@@ -8,24 +11,24 @@ dev:
 logs:
 	docker compose logs -f
 
-seed:
+seed: setup
 	$(PYTHON) -m src.metadata_store migrate
 	$(PYTHON) -m src.storage seed
 	$(PYTHON) -m src.indexer --fixture fixtures/public/documents.jsonl
 
-index:
+index: setup
 	$(PYTHON) -m src.indexer --fixture fixtures/public/documents.jsonl
 
-test:
+test: setup
 	$(PYTHON) -m pytest tests/public
 
-test-unit:
+test-unit: setup
 	$(PYTHON) -m pytest tests/public/test_unit_contract.py
 
-test-integration:
+test-integration: setup
 	$(PYTHON) -m pytest tests/public/test_integration_rag.py
 
-eval:
+eval: setup
 	$(PYTHON) -m src.eval_runner --queries fixtures/public/queries.jsonl --out results/retrieval_report.json
 
 clean:
