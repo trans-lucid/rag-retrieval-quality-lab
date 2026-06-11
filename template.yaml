@@ -23,7 +23,7 @@ local_environment:
   required:
     - docker
     - docker-compose
-    - python-3.12
+    - python-3.11-or-newer
   public_services:
     - name: postgres
       purpose: tenants, users, ACLs, document metadata, and eval results
